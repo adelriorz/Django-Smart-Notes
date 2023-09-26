@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+    {%block content%}
+
+        <h1 class="my-5">There are all the notes:</h1>
+    
+        <div class="row row-cols3 g-2">
+            {%for note in notes%}
+            <div class="col">
+                <div class="p-3 border">
+                    <a href={% url "notes.detail" pk=note.id %} class="text-dark text-decoration-non"><h3>{{note.title}}</h3></a>
+                    <p>{{note.text | truncatechars:15}}</p>
+                    <p>{{note.created | truncatechars:15}}</p>
+                </div>
+            </div>   
+            {%endfor%}
+            {% comment %} Django template language logic {% endcomment %}
+            {% comment %} {%for note in notes%}{% endcomment %}
+                {% comment %} Things that should be rendered by the server
+                <dl>
+                    <dt class="note-dt">{{note.title}}</dt>
+                    <dt></dt>
+                    <dt></dt>
+                </dl>
+            {%endfor%}
+            {% endcomment %}
+            </div>
+            
+    {%endblock%}
